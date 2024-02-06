@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+typedef struct Foe Foe;
+
 enum Class
 {
     WARRIOR,
@@ -43,5 +45,12 @@ Function to level up the whole party
 @param party_size: size of the party
 */
 void levelUpParty(Character *characters[], size_t party_size);
+
+/*
+Function to attack a foe
+@param attacker: pointer to a character
+@param defender: pointer to a foe
+*/
+void attack(Character *attacker, Foe *defender);
 
 #endif

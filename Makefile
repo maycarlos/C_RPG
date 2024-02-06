@@ -1,6 +1,6 @@
 COMPILER = clang
 COMPILER_FLAGS = -Wall -Wextra -pedantic
-INCLUDE_PATH = -I include/
+INCLUDE_PATH = -Iinclude/
 SOURCE = src/*.c
 TARGET = c_rpg
 

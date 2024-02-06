@@ -17,43 +17,25 @@ int main()
     Character *characters[] = {warrior, mage, rogue};
     size_t party_size = sizeof(characters) / sizeof(characters[0]);
 
-    printCharacter(warrior);
-    puts("\n");
-    printCharacter(mage);
-    puts("\n");
-    printCharacter(rogue);
-    puts("\n");
+    Foe *goblin = createFoe("Goblin", characters, party_size);
+    Foe *orc = createFoe("Orc", characters, party_size);
+    Foe *dragon = createFoe("Dragon", characters, party_size);
 
-    levelUpParty(characters, party_size);
+    Foe *foes[] = {goblin, orc, dragon};
 
-    puts("\n");
+    printFoe(goblin);
+    printFoe(orc);
+    printFoe(dragon);
 
-    printCharacter(warrior);
-    puts("\n");
-    printCharacter(mage);
-    puts("\n");
-    printCharacter(rogue);
-    puts("\n");
-
-    levelUpParty(characters, party_size);
-    levelUpParty(characters, party_size);
-
-    printCharacter(warrior);
-    puts("\n");
-    printCharacter(mage);
-    puts("\n");
-    printCharacter(rogue);
-    puts("\n");
-
-    Foe *blackDragon = createFoe("Black Dragon", characters, party_size);
-    printFoe(blackDragon);
-
-    puts("\n");
+    size_t foes_size = sizeof(foes) / sizeof(foes[0]);
+    adventureLoop(characters, party_size, foes, foes_size);
 
     free(warrior);
     free(mage);
     free(rogue);
-    free(blackDragon);
+    free(goblin);
+    free(orc);
+    free(dragon);
 
     return 0;
 }

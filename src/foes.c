@@ -13,7 +13,6 @@ Foe *createFoe(char name[50], Character *characters[], size_t party_size)
     // Initialize total stats
     int total_level = 0, total_strength = 0, total_dexterity = 0, total_intelligence = 0, total_luck = 0, total_health = 0;
 
-
     // Calculate the total stats of the party
     for (size_t i = 0; i < party_size; i++)
     {
@@ -42,4 +41,12 @@ Foe *createFoe(char name[50], Character *characters[], size_t party_size)
     newFoe->healthStat = average_health * 1.2;            // Adjust the factor as needed
 
     return newFoe;
+}
+
+void attackFoe(Foe *attacker, Character *defender)
+{
+    printf("%s attacks %s!\n", attacker->name, defender->name);
+    defender->healthStat -= attacker->strengthStat;
+    printf("%s has %d health left\n", defender->name, defender->healthStat);
+    puts("\n");
 }

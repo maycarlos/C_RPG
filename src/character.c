@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "character.h"
+#include "foes.h"
 
 Character *createCharacter(char name[50], enum Class CharacterClass)
 {
@@ -54,11 +55,18 @@ void levelUp(Character *character)
     }
 }
 
-
 void levelUpParty(Character *characters[], size_t party_size)
 {
     for (size_t i = 0; i < party_size; i++)
     {
         levelUp(characters[i]);
     }
+}
+
+void attack(Character *attacker, Foe *defender)
+{
+    printf("%s attacks %s!\n", attacker->name, defender->name);
+    defender->healthStat -= attacker->strengthStat;
+    printf("%s has %d health left\n", defender->name, defender->healthStat);
+    puts("\n");
 }
