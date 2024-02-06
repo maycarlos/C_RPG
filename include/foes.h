@@ -1,8 +1,10 @@
 #ifndef FOES_H
 #define FOES_H
 
-#include "character.h"
+#include <stdlib.h>
 
+
+typedef struct Character Character;
 typedef struct Foe
 {
     char name[50];
@@ -21,5 +23,12 @@ Create foes based of the character level
 @param party_size - size of the party
 */
 Foe *createFoe(char name[50], Character *characters[], size_t party_size);
+
+/*
+Function to attack a character
+@param attacker: pointer to a foe
+@param defender: pointer to a character
+*/
+void attackFoe(Foe *attacker, Character *defender);
 
 #endif

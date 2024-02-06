@@ -23,6 +23,6 @@ Main adventure loop
 @param foes: the foes to fight
 @param foes_size: the size of the foes
 */
-void adventureLoop(Character *party, size_t party_size, Foe *foes, size_t foes_size);
+void adventureLoop(Character *party[], size_t party_size, Foe *foes[], size_t foes_size);
 
 #endif
