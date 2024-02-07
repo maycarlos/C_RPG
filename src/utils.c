@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "character.h"
-#include "foes.h"
+#include "utils.h"
 
 #define ANSI_COLOR_RED "\x1b[31m"
 #define ANSI_COLOR_GREEN "\x1b[32m"
@@ -29,7 +28,7 @@ void printCharacter(Character *character)
     }
 
     printf("Level: %d\n", character->level);
-    printf("Health: %d\n", character->healthStat);
+    printf("Health: %.02f\n", character->healthStat);
     printf("Strength: %d\n", character->strengthStat);
     printf("Dexterity: %d\n", character->dexterityStat);
     printf("Inteligence: %d\n", character->inteligenceStat);
@@ -37,11 +36,11 @@ void printCharacter(Character *character)
     printf("Experience: %.02f\n", character->experience);
 }
 
-void printFoe(Foe *foe)
+void printMonster(Monster *foe)
 {
     printf("Name: %s\n", foe->name);
     printf("Level: %d\n", foe->level);
-    printf("Health: %d\n", foe->healthStat);
+    printf("Health: %.02f\n", foe->healthStat);
     printf("Strength: %d\n", foe->strengthStat);
     printf("Dexterity: %d\n", foe->dexterityStat);
     printf("Inteligence: %d\n", foe->inteligenceStat);

@@ -25,6 +25,6 @@ void printCharacter(Character *character);
 Print the foe's stats
 @param foe: pointer to a foe
 */
-void printFoe(Foe *foe);
+void printFoe(Monster *monster);
 
 #endif

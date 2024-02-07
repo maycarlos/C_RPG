@@ -5,6 +5,7 @@
 #include "character.h"
 #include "utils.h"
 #include "foes.h"
+#include "adventure.h"
 
 int main()
 {
@@ -17,18 +18,14 @@ int main()
     Character *characters[] = {warrior, mage, rogue};
     size_t party_size = sizeof(characters) / sizeof(characters[0]);
 
-    Foe *goblin = createFoe("Goblin", characters, party_size);
-    Foe *orc = createFoe("Orc", characters, party_size);
-    Foe *dragon = createFoe("Dragon", characters, party_size);
+    Monster *goblin = createMonster("Goblin", GOBLIN, characters, party_size);
+    Monster *orc = createMonster("Orc", ORC, characters, party_size);
+    Monster *dragon = createMonster("Dragon", DRAGON, characters, party_size);
 
-    Foe *foes[] = {goblin, orc, dragon};
+    Monster *monsters[] = {goblin, orc, dragon};
+    size_t monsters_n = sizeof(monsters) / sizeof(monsters[0]);
 
-    printFoe(goblin);
-    printFoe(orc);
-    printFoe(dragon);
-
-    size_t foes_size = sizeof(foes) / sizeof(foes[0]);
-    adventureLoop(characters, party_size, foes, foes_size);
+    adventureLoop(characters, party_size, monsters, monsters_n);
 
     free(warrior);
     free(mage);
