@@ -2,8 +2,9 @@
 #define character_h
 
 #include <stdint.h>
+#include <stddef.h>
 
-typedef struct Foe Foe;
+typedef struct Monster Monster;
 
 enum Class
 {
@@ -17,7 +18,7 @@ typedef struct Character
     char name[50];
     uint32_t level;
     enum Class CharacterClass;
-    uint32_t healthStat;
+    float healthStat;
     uint32_t strengthStat;
     uint32_t dexterityStat;
     uint32_t inteligenceStat;
@@ -51,6 +52,6 @@ Function to attack a foe
 @param attacker: pointer to a character
 @param defender: pointer to a foe
 */
-void attack(Character *attacker, Foe *defender);
+void attack(Character *attacker, Monster *defender);
 
 #endif

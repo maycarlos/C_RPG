@@ -63,10 +63,10 @@ void levelUpParty(Character *characters[], size_t party_size)
     }
 }
 
-void attack(Character *attacker, Foe *defender)
+void attack(Character *attacker, Monster *defender)
 {
     printf("%s attacks %s!\n", attacker->name, defender->name);
-    defender->healthStat -= attacker->strengthStat;
-    printf("%s has %d health left\n", defender->name, defender->healthStat);
+    defender->healthStat -= 1.3 * attacker->strengthStat;
+    printf("%s has %.02f health left\n", defender->name, defender->healthStat);
     puts("\n");
 }

@@ -2,19 +2,30 @@
 #define FOES_H
 
 #include <stdlib.h>
-
+#include <inttypes.h>
 
 typedef struct Character Character;
-typedef struct Foe
+
+/*
+Enum to represent the class of the monsters
+*/
+enum MonsterClass
+{
+    GOBLIN,
+    ORC,
+    DRAGON
+};
+
+typedef struct Monster
 {
     char name[50];
-    int level;
-    int strengthStat;
-    int dexterityStat;
-    int inteligenceStat;
-    int luckStat;
-    int healthStat;
-} Foe;
+    uint32_t level;
+    uint32_t strengthStat;
+    uint32_t dexterityStat;
+    uint32_t inteligenceStat;
+    uint32_t luckStat;
+    float healthStat;
+} Monster;
 
 /*
 Create foes based of the character level
@@ -22,13 +33,13 @@ Create foes based of the character level
 @param characters - characters party stats
 @param party_size - size of the party
 */
-Foe *createFoe(char name[50], Character *characters[], size_t party_size);
+Monster *createMonster(char name[50], enum MonsterClass monster_cls, Character *characters[], size_t party_size);
 
 /*
 Function to attack a character
 @param attacker: pointer to a foe
 @param defender: pointer to a character
 */
-void attackFoe(Foe *attacker, Character *defender);
+void attackFoe(Monster *attacker, Character *defender);
 
 #endif
