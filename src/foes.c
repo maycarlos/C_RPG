@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "foes.h"
 #include "character.h"
+#include "foes.h"
 
-Foe *createFoe(char name[50], Character *characters[], size_t party_size)
+Monster *createMonster(char name[50], enum MonsterClass monster_cls, Character *characters[], size_t party_size)
 {
-    Foe *newFoe = (Foe *)malloc(sizeof(Foe));
+    Monster *newFoe = (Monster *)malloc(sizeof(Monster));
     strcpy(newFoe->name, name);
 
     // Initialize total stats
@@ -32,21 +32,40 @@ Foe *createFoe(char name[50], Character *characters[], size_t party_size)
     int average_luck = total_luck / party_size;
     int average_health = total_health / party_size;
 
-    // Set the foe's stats to be proportional to the average stats of the party
-    newFoe->level = average_level * 1.2;                  // Adjust the factor as needed
-    newFoe->strengthStat = average_strength * 1.2;        // Adjust the factor as needed
-    newFoe->dexterityStat = average_dexterity * 1.2;      // Adjust the factor as needed
-    newFoe->inteligenceStat = average_intelligence * 1.2; // Adjust the factor as needed
-    newFoe->luckStat = average_luck * 1.2;                // Adjust the factor as needed
-    newFoe->healthStat = average_health * 1.2;            // Adjust the factor as needed
-
+    if (monster_cls == GOBLIN)
+    {
+        newFoe->level = average_level * 0.8;                  // Adjust the factor as needed
+        newFoe->strengthStat = average_strength * 0.8;        // Adjust the factor as needed
+        newFoe->dexterityStat = average_dexterity * 0.8;      // Adjust the factor as needed
+        newFoe->inteligenceStat = average_intelligence * 0.8; // Adjust the factor as needed
+        newFoe->luckStat = average_luck * 0.8;                // Adjust the factor as needed
+        newFoe->healthStat = average_health * 0.8;            // Adjust the factor as needed
+    }
+    else if (monster_cls == ORC)
+    {
+        newFoe->level = average_level * 1.0;                  // Adjust the factor as needed
+        newFoe->strengthStat = average_strength * 1.0;        // Adjust the factor as needed
+        newFoe->dexterityStat = average_dexterity * 1.0;      // Adjust the factor as needed
+        newFoe->inteligenceStat = average_intelligence * 1.0; // Adjust the factor as needed
+        newFoe->luckStat = average_luck * 1.0;                // Adjust the factor as needed
+        newFoe->healthStat = average_health * 1.0;            // Adjust the factor as needed
+    }
+    else if (monster_cls == DRAGON)
+    {
+        newFoe->level = average_level * 1.2;                  // Adjust the factor as needed
+        newFoe->strengthStat = average_strength * 1.2;        // Adjust the factor as needed
+        newFoe->dexterityStat = average_dexterity * 1.2;      // Adjust the factor as needed
+        newFoe->inteligenceStat = average_intelligence * 1.2; // Adjust the factor as needed
+        newFoe->luckStat = average_luck * 1.2;                // Adjust the factor as needed
+        newFoe->healthStat = average_health * 1.2;            // Adjust the factor as needed
+    }
     return newFoe;
 }
 
-void attackFoe(Foe *attacker, Character *defender)
+void attackFoe(Monster *attacker, Character *defender)
 {
     printf("%s attacks %s!\n", attacker->name, defender->name);
-    defender->healthStat -= attacker->strengthStat;
-    printf("%s has %d health left\n", defender->name, defender->healthStat);
+    defender->healthStat -= 1.3 * attacker->strengthStat;
+    printf("%s has %.02f health left\n", defender->name, defender->healthStat);
     puts("\n");
 }
