@@ -16,7 +16,7 @@ bool isPartyAlive(Character *party, size_t party_size)
     return false;
 }
 
-void *selectRandom(void *array[], size_t size)
+void *selectRandom(void **array, size_t size)
 {
     size_t index = rand() % size;
     printf("Index: %ld\n", index);
@@ -24,7 +24,7 @@ void *selectRandom(void *array[], size_t size)
     return array[index];
 }
 
-void adventureLoop(Character *party[], size_t party_size, Monster *monsters[], size_t monsters_size)
+void adventureLoop(Character **party, size_t party_size, Monster **monsters, size_t monsters_size)
 {
 
     Monster *currentMonster = selectRandom(monsters, monsters_size);

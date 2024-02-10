@@ -5,7 +5,7 @@
 #include "character.h"
 #include "foes.h"
 
-Monster *createMonster(char name[50], enum MonsterClass monster_cls, Character *characters[], size_t party_size)
+Monster *createMonster(char name[50], enum MonsterClass monster_cls, Character **characters, size_t party_size)
 {
     Monster *newFoe = (Monster *)malloc(sizeof(Monster));
     strcpy(newFoe->name, name);

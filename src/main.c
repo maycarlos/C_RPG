@@ -26,13 +26,26 @@ int main()
     printCharacter(getElement(characters, 1));
     printCharacter(getElement(characters, 2));
 
-    Monster *goblin = createMonster("Goblin", GOBLIN);
-    Monster *orc = createMonster("Orc", ORC);
-    Monster *dragon = createMonster("Dragon", DRAGON);
+    Monster *goblin = createMonster("Goblin", GOBLIN, (Character **)characters->array, characters->size);
+    Monster *orc = createMonster("Orc", ORC, (Character **)characters->array, characters->size);
+    Monster *dragon = createMonster("Dragon", DRAGON, (Character **)characters->array, characters->size);
 
-    printf("Size of the dynamic array: %ld\n", characters->size);
+    printf("Size of the characters dynamic array: %ld\n", characters->size);
+
+    DynamicArray *monsters = createDynamicArray(NULL, 0);
+
+    monsters = appendElement(monsters, goblin);
+    monsters = appendElement(monsters, orc);
+    monsters = appendElement(monsters, dragon);
+
+    printMonster(getElement(monsters, 0));
+    printMonster(getElement(monsters, 1));
+    printMonster(getElement(monsters, 2));
+
+    printf("Size of the monsters dynamic array: %ld\n", monsters->size);
 
     freeDynamicArray(characters);
+    freeDynamicArray(monsters);
 
     // Character *characters[] = {warrior, mage, rogue};
     // size_t party_size = sizeof(characters) / sizeof(characters[0]);

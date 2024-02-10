@@ -20,7 +20,7 @@ Select a random element from an array
 @param array: the array of characters or monsters
 @param size: the size of the array
 */
-void *selectRandom(void *array[], size_t size);
+void *selectRandom(void **array, size_t size);
 
 /*
 Main adventure loop
@@ -30,6 +30,6 @@ Main adventure loop
 @param foes: the foes to fight
 @param foes_size: the size of the foes
 */
-void adventureLoop(Character *party[], size_t party_size, Monster *foes[], size_t foes_size);
+void adventureLoop(Character **party, size_t party_size, Monster **foes, size_t foes_size);
 
 #endif
