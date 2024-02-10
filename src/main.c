@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "foes.h"
 #include "adventure.h"
+#include "dynamic_array.h"
 
 int main()
 {
@@ -15,24 +16,42 @@ int main()
     Character *mage = createCharacter("Elmah", MAGE);
     Character *rogue = createCharacter("Mayah", ROGUE);
 
-    Character *characters[] = {warrior, mage, rogue};
-    size_t party_size = sizeof(characters) / sizeof(characters[0]);
+    DynamicArray *characters = createDynamicArray(NULL, 0);
 
-    Monster *goblin = createMonster("Goblin", GOBLIN, characters, party_size);
-    Monster *orc = createMonster("Orc", ORC, characters, party_size);
-    Monster *dragon = createMonster("Dragon", DRAGON, characters, party_size);
+    characters = appendElement(characters, warrior);
+    characters = appendElement(characters, mage);
+    characters = appendElement(characters, rogue);
 
-    Monster *monsters[] = {goblin, orc, dragon};
-    size_t monsters_n = sizeof(monsters) / sizeof(monsters[0]);
+    printCharacter(getElement(characters, 0));
+    printCharacter(getElement(characters, 1));
+    printCharacter(getElement(characters, 2));
 
-    adventureLoop(characters, party_size, monsters, monsters_n);
+    Monster *goblin = createMonster("Goblin", GOBLIN);
+    Monster *orc = createMonster("Orc", ORC);
+    Monster *dragon = createMonster("Dragon", DRAGON);
 
-    free(warrior);
-    free(mage);
-    free(rogue);
-    free(goblin);
-    free(orc);
-    free(dragon);
+    printf("Size of the dynamic array: %ld\n", characters->size);
 
-    return 0;
+    freeDynamicArray(characters);
+
+    // Character *characters[] = {warrior, mage, rogue};
+    // size_t party_size = sizeof(characters) / sizeof(characters[0]);
+
+    // Monster *goblin = createMonster("Goblin", GOBLIN, characters, party_size);
+    // Monster *orc = createMonster("Orc", ORC, characters, party_size);
+    // Monster *dragon = createMonster("Dragon", DRAGON, characters, party_size);
+
+    // Monster *monsters[] = {goblin, orc, dragon};
+    // size_t monsters_n = sizeof(monsters) / sizeof(monsters[0]);
+
+    // adventureLoop(characters, party_size, monsters, monsters_n);
+
+    // free(warrior);
+    // free(mage);
+    // free(rogue);
+    // free(goblin);
+    // free(orc);
+    // free(dragon);
+
+    // return 0;
 }
