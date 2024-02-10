@@ -1,15 +1,18 @@
 COMPILER = clang
+STANDARD = -std=c17
 COMPILER_FLAGS = -Wall -Wextra -pedantic
 INCLUDE_PATH = -Iinclude/
 SOURCE = src/*.c
 TARGET = c_rpg
 
 
-run: build
+.DEFAULT_GOAL := build
+
+run: $(TARGET)
 	./$(TARGET)
 
 build: src/main.c
-	$(COMPILER) $(COMPILER_FLAGS) $(INCLUDE_PATH) -o c_rpg $(SOURCE)
+	$(COMPILER) $(STANDARD) $(COMPILER_FLAGS) $(INCLUDE_PATH) -o $(TARGET) $(SOURCE)
 
-clean: main
+clean:
 	rm $(TARGET)
