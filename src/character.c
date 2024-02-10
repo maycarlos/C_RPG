@@ -67,6 +67,13 @@ void attack(Character *attacker, Monster *defender)
 {
     printf("%s attacks %s!\n", attacker->name, defender->name);
     defender->healthStat -= 1.3 * attacker->strengthStat;
-    printf("%s has %.02f health left\n", defender->name, defender->healthStat);
+    if (defender->healthStat <= 0.0)
+    {
+        return;
+    }
+    else
+    {
+        printf("%s has %.02f health left\n", defender->name, defender->healthStat);
+    }
     puts("\n");
 }
