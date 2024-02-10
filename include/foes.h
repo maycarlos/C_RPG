@@ -40,6 +40,6 @@ Function to attack a character
 @param attacker: pointer to a foe
 @param defender: pointer to a character
 */
-void attackFoe(Monster *attacker, Character *defender);
+void attackMonster(Monster *attacker, Character *defender);
 
 #endif

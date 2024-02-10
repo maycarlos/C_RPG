@@ -62,10 +62,15 @@ Monster *createMonster(char name[50], enum MonsterClass monster_cls, Character *
     return newFoe;
 }
 
-void attackFoe(Monster *attacker, Character *defender)
+void attackMonster(Monster *attacker, Character *defender)
 {
     printf("%s attacks %s!\n", attacker->name, defender->name);
     defender->healthStat -= 1.3 * attacker->strengthStat;
+    if (defender->healthStat <= 0.0)
+    {
+        printf("%s has been defeated!\n", defender->name);
+        return;
+    }
     printf("%s has %.02f health left\n", defender->name, defender->healthStat);
     puts("\n");
 }
